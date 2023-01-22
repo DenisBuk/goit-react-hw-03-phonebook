@@ -7,7 +7,7 @@ import Filter from "../components/Filter/Filter";
 import ContactsList from "./ContactList";
 import Container from "../components/Container";
 
-class App extends Component {
+export class App extends Component {
   state = {
     contacts: [
       { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },

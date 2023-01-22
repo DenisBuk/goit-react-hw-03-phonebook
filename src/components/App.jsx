@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { nanoid } from "nanoid";
-import css from "../components/App.module.css";
+import css from "./App.module.css";
 
 
 import ContactForm from "../components/ContactForm";
@@ -18,6 +18,20 @@ class App extends Component {
     ],
     filter: "",
   };
+
+
+  componentDidMount() { 
+    const contactLS = JSON.parse(localStorage.getItem("contacts"));
+    if (contactLS) { 
+      this.setState({ contacts: contactLS });
+    }
+  }
+
+  componentDidUpdate(pp, ps) { 
+    if (this.state.contacts.length !== ps.contacts.length) {
+      localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
+     }
+  }
 
   addContact = (name, number) => { 
     this.state.contacts.every((contact) => contact.name !== name)
@@ -54,13 +68,17 @@ contacts: ps.contacts.filter((contact) => contact.id !== id),
     const { filter } = this.state;
     const { addContact, deleteContact, handleFilterChange, getFindContact } = this;
     
-    return (<Container>
+    return (
+      <div className={css.App}>
+      <Container>
       <h1>Phonebook</h1>
       <ContactForm addContact={addContact} />
       <h2>Contacts</h2>
       <Filter value={filter} onFilterChange={handleFilterChange} />
       <ContactsList list={getFindContact()} onClick={ deleteContact} />
-    </Container>);
+      </Container>
+      </div>
+    );
   }
 }
 

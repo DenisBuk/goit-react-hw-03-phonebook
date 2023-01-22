@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Button from "../Button";
+import css from "./Contact.module.css";
 
 function Contact({ name, number, idx, onClick }) {
     return (

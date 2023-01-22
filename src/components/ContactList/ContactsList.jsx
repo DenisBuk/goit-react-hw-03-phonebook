@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import css from "./ContactsList.module.css";
 
-import Contact from "../Contact";
+import Contact from "../Contact/Contact";
 
 function ContactsList({ list, onClick }) { 
     return (

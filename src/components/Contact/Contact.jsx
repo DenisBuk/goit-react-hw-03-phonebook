@@ -5,7 +5,7 @@ import Button from "../Button";
 
 function Contact({ name, number, idx, onClick }) {
     return (
-        <li>
+        <li className={css.Contact}>
             <p>
                 {idx + 1} - {name}: { number}
                 <Button onClick={onClick} text="Delete" type="button"/>

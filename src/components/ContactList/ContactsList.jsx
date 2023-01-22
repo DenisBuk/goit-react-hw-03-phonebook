@@ -6,14 +6,16 @@ import Contact from "../Contact/Contact";
 
 function ContactsList({ list, onClick }) { 
     return (
-        <ul>
+        <ul className={css.ContactsList}>
             {list.map(({ name, number, id }, idx) => (
                 <Contact
                     key={id}
                     idx={idx}
                     name={name}
                     number={number}
-                    onClick={() => { onClick(id); }}
+                    onClick={() => {
+                        onClick(id);
+                    }}
                 />
             ))}
         </ul>
